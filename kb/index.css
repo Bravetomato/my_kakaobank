@@ -1,0 +1,1107 @@
+html {
+    /* 영문이면 roboto가 적용되고, 한글이면 Noto Sans KR가 적용되도록 아래와 같은 순서로 배치 */
+    font-family: "Roboto", "Noto Sans KR", sans-serif;
+}
+
+/* 노말라이즈 */
+body,
+ul,
+li,
+h1 {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+label[for] {
+    cursor: pointer;
+    user-select: none;
+}
+
+/* lib */
+.border-red {
+    border: 4px solid red;
+}
+
+.border-pink {
+    border: 4px solid pink;
+}
+
+.border-blue {
+    border: 4px solid blue;
+}
+
+.border-green {
+    border: 4px solid green;
+}
+
+.border-black {
+    border: 4px solid black;
+}
+
+.border-gold {
+    border: 4px solid gold;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-jc-e {
+    justify-content: flex-end;
+}
+
+.flex-jc-s {
+    justify-content: flex-start;
+}
+
+.flex-jc-c {
+    justify-content: center;
+}
+
+.flex-jc-sb {
+    justify-content: space-between;
+}
+
+.flex-ai-c {
+    align-items: center;
+}
+
+.flex-as-c {
+    align-self: center;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.height-100p {
+    height: 100%;
+}
+
+.block {
+    display: block;
+}
+
+.con {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* cos */
+.overflow-hidden {
+    /*이미지 등장시 숨겨져 있는 부분을 보이는 것 방지하기 위해 overflow:hidden을 걸어주기 위함*/
+    overflow: hidden;
+}
+
+.con {
+    width: 1080px;
+}
+
+.con-min-width {
+    min-width: 1080px;
+}
+
+::selection {
+    background-color: #fede22;
+}
+
+.img-box>img {
+    /*창이 작아져도 이미지 크기 그대로 유지하기 위해*/
+    width: 100%;
+    display: block;
+}
+
+.relative {
+    /*txt-box의 범위 설정을 위해서. html에 con relative클래스를 만들어 텍스트 박스를 자식으로 삼는다. */
+    position: relative;
+}
+
+.txt-al-c {
+    /*텍스트 내용 중앙정렬*/
+    text-align: center;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.black {
+    color: black;
+}
+
+/* 탑바 시작 */
+body {
+    /*라이언이 있는 상단 이미지에 padding-top주기*/
+    padding-top: 100px;
+}
+
+.top-bar {
+    height: 100px;
+    background-color: white;
+    /*  임시   border-bottom: 1px solid rgba(0, 0, 0, 0.5); */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    /*포지션이 fixed라서 유령화된 탑바를 드러나도록 함*/
+}
+
+/* 탑바-로고 */
+.top-bar .logo {
+    padding: 0 20px;
+}
+
+/* 탑바 - 메뉴박스 1 */
+.top-bar .menu-box-1 {
+    /*메뉴박스 1과 서류제출하기와 거리 두기 위해*/
+    margin-right: 30px;
+}
+
+.top-bar .menu-box-1>ul>li>a {
+    font-weight: bold;
+    padding: 0 20px;
+    position: relative;
+}
+
+.top-bar .menu-box-1 ul>li>a:hover {
+    text-decoration: underline;
+}
+
+.top-bar .menu-box-1>ul>li>a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 0;
+    transition: width .3s;
+    /*2차 메뉴 중간에 닫히는 버그 수정: 마우스 이동이 느려도 밑줄 사라지지 않도록*/
+    height: 1px;
+    bottom: -1px;
+    border-top: 2px solid black;
+    background-color: transparent;
+    /*또는 백드라운드 컬러 삭제*/
+}
+
+.top-bar .menu-box-1>ul>li:hover>a::after {
+    width: 100%;
+}
+
+/* 탑바 - 메뉴박스 1 - 2차 메뉴 */
+.top-bar .menu-box-1>ul>li>div {
+    left: 0;
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    display: none;
+    padding-top: 30px;
+    padding-bottom: 40px;
+    top: calc(100% + 1px);
+}
+
+.top-bar .menu-box-1>ul>li:hover>div {
+    display: block;
+}
+
+.top-bar .menu-box-1>ul>li>div>div>ul>li {
+    width: 20%;
+}
+
+.top-bar .menu-box-1>ul>li:first-child>div>div>ul>li {
+    width: 25%;
+}
+
+.top-bar .menu-box-1>ul>li>div>div>ul>li>a {
+    text-align: center;
+    padding: 30px 0;
+    font-weight: bold;
+}
+
+/* 탑바 - 메뉴박스 1 - 3차 메뉴 */
+.top-bar .menu-box-1>ul>li>div>div>ul>li>ul>li>a {
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* 탑바 - 서류제출 버튼 */
+.top-bar .btn-go-submit {
+    background-color: #fede22;
+    padding: 20px;
+    font-weight: bold;
+    border-radius: 30px;
+}
+
+/* 탑바 - 언어변경 버튼 */
+.top-bar .global-logo {
+    padding: 0 20px;
+    /*마우스 커서 손가락 모양 말고 기본 모양으로 */
+    cursor: default;
+}
+
+.top-bar .global-logo:hover>img {
+    opacity: .3;
+}
+
+/* 탑바 끝 */
+
+/*상단 배너박스 1 시작*/
+.top-banner-box-1 {
+    position: relative;
+}
+
+/*cos lib*/
+.ico {
+    /*배경이미지 불러오기와 아이콘이 들어갈 흰 상자 만들기*/
+    background-color: white;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background-image: url(img/img_kabang_220615.png);
+}
+
+.ico-1 {
+    /*여러 아이콘 중 해당 아이콘이 있는 좌표값*/
+    background-position: -341px -292px;
+}
+
+.ico-2 {
+    background-position: -371px -292px;
+}
+
+/* 상단 배너박스 1 - 배경 */
+.top-banner-box-1 .bg {
+    height: 648px;
+    /*이미지의 높이와 색 높이 맞추기*/
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #ffef6b;
+    /*배경색은 위에 있고 이미지는 아래에 있기 때문에*/
+    position: absolute;
+    /*배경색을 뒤로 보내기 위해*/
+    z-index: -1;
+}
+
+.img-box>img {
+    /*창이 작아져도 이미지 크기 그대로 유지하기 위해*/
+    width: 100%;
+    display: block;
+}
+
+/* 상단 배너박스 1 - 텍스트 박스 */
+.top-banner-box-1 .txt-box {
+    /*텍스트 박스를 배경이미지 위에 옮기기 위해*/
+    position: absolute;
+    /*텍스트 박스를 배경이미지 위로*/
+    top: 105px;
+    left: 50px;
+}
+
+.top-banner-box-1 .txt-box>h1 {
+    font-size: 49px;
+    line-height: 68.6px;
+}
+
+.top-banner-box-1 .txt-box>h2 {
+    font-size: 16px;
+    line-height: 32.2px;
+    font-weight: 400;
+}
+
+.top-banner-box-1 .txt-box>.btns {
+    /*txt-box와 간격 조절*/
+    margin-top: 40px;
+}
+
+.top-banner-box-1 .txt-box>.btns>li:not(:first-child) {
+    /*구글 플레이는 왼쪽에 붙이고, 앱스토어는 왼쪽 공백주기*/
+    margin-left: 10px;
+}
+
+.top-banner-box-1 .txt-box>.btns>li>a {
+    background-color: white;
+    display: flex;
+    width: 178px;
+    border-radius: 12px;
+    font-size: 16.2px;
+    height: 50px;
+    font-weight: bold;
+    color: #333;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-banner-box-1 .txt-box>.btns>li>a .ico {
+    margin-right: 10px;
+}
+
+.top-banner-box-1 .txt-box>.btns>li:hover>a {
+    text-decoration: underline;
+}
+
+/*상단 배너박스 1 끝*/
+
+/*상단 배너박스 타입 1 시작*/
+.top-banner-box-type-1 {
+    min-height: 500px;
+    display: flex;
+    margin-top: 55px;
+    padding-bottom: 30px;
+}
+
+.top-banner-box-type-1>div:first-child {
+    /*화면왼쪽부분*/
+    width: 55%;
+    display: flex;
+    align-items: center;
+}
+
+.top-banner-box-type-1>div:last-child {
+    /*화면오른쪽부분*/
+    flex-grow: 1;
+    /*first-child가 차지한 공간 제외한 나머지를 모두 가지겠다는 의미*/
+    display: flex;
+    align-items: center;
+}
+
+.top-banner-box-type-1 .txt-box {}
+
+.top-banner-box-type-1 .txt-box>h1 {
+    /*오른쪽 큰 글씨*/
+    font-size: 40px;
+    line-height: 1.35;
+}
+
+.top-banner-box-type-1 .txt-box>.des {
+    /*오른쪽 작은글씨*/
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 400;
+    margin-top: 24px;
+    color: #666;
+}
+
+.top-banner-box-type-1 .txt-box>.btn-box {
+    /*.btn-box는 btn-box들을 묶어주기 위해 설정*/
+    /*     outline: 1px solid blue; */
+    margin-top: 40px;
+    display: flex;
+}
+
+.top-banner-box-type-1 .txt-box>.btn-box>a {
+    /*왜 > a에 넣어야하는지?-> a는 텍스트만 의미하는 것이 아닌 btn-box를 이루는 속성을 모두 의미하는 것. outline을 설정해보면 버튼 전체를 감싸는 걸 볼 수 있다.*/
+    /*     outline: 1px solid red; */
+    background-color: #f6f6f6;
+    border-radius: 10px;
+    width: 258px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+}
+
+/*버튼에 마우스대면 글자에 밑줄*/
+.top-banner-box-type-1 .txt-box>.btn-box>a:hover>span {
+    /*span속 글자만 밑줄*/
+    text-decoration: underline;
+}
+
+.top-banner-box-type-1 .txt-box>.btn-box>a::after {
+    content: ">";
+    margin-left: 10px;
+}
+
+.top-banner-box-type-1 .txt-box>.btn-box>a:not(:only-child) {
+    /*자식이 하나 이상인 것, 즉 버튼이 하나가 아닌 것들에 해당*/
+    width: 158px;
+}
+
+.top-banner-box-type-1 .txt-box>.btn-box>a:not(:last-child) {
+    /*자식이 마지막 순서가 아닌 것, 즉 첫번째 버튼에 해당*/
+    margin-right: 5px;
+}
+
+/*사이사이 공백*/
+.top-banner-box-type-1-between-pad {
+    height: 32px;
+    background-color: #fafafa;
+}
+
+/*상단 배너박스 타입 1 끝*/
+
+/*상단 배너박스 2 시작*/
+.top-banner-box-2>div:first-child>* {
+    /* > * 모든 것. 즉, 첫번째 자식의 모든것*/
+    margin-left: 40px;
+}
+
+.top-banner-box-2>div:last-child>* {
+    /*마지막 자식의 모든것*/
+    margin-left: 40px;
+}
+
+.top-banner-box-2 .img-box {
+    /*화면 왼쪽에 들어간 이미지*/
+    width: 473px;
+}
+
+/*상단 배너박스 2 끝*/
+
+/*상단 배너박스 3 시작*/
+.top-banner-box-3>div:first-child>* {
+    /* > * 모든 것. 즉, 첫번째 자식의 모든것*/
+    margin-left: 70px;
+}
+
+.top-banner-box-3>div:last-child>* {
+    /*마지막 자식의 모든것*/
+    margin-left: 66px;
+}
+
+.top-banner-box-3 .txt-box>.img-box-1 {
+    margin-top: 80px;
+}
+
+.top-banner-box-3 .txt-box>.img-box-1>img {
+    width: 440px;
+}
+
+.top-banner-box-3 .img-box {
+    width: 409px;
+}
+
+.top-banner-box-3 .img-box>img {
+    /*이미지 애니메이션 주기*/
+    transition: transform 1s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 1s;
+    transform: translatex(100%);
+    opacity: 0;
+}
+
+.top-banner-box-3 .img-box.active>img {
+    /*이미지 애니메이션 주기*/
+    transform: translatex(0);
+    opacity: 1;
+}
+
+/*상단 배너박스 3 끝*/
+
+/*상단 배너박스 4 시작*/
+.top-banner-box-4>div:first-child>* {
+    /* > * 모든 것. 즉, 첫번째 자식의 모든것*/
+    margin-left: 57px;
+}
+
+.top-banner-box-4>div:last-child>* {
+    /*마지막 자식의 모든것*/
+    margin-left: 35px;
+}
+
+.top-banner-box-4 .img-box {
+    /*화면 왼쪽에 들어간 이미지*/
+    width: 459px;
+}
+
+.txt-logo-1 {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    background: url(img/renewal/logo-moim.png) no-repeat 0 0;
+    background-size: 40px 40px;
+    vertical-align: middle;
+    margin-right: 0px;
+    margin-top: -4px;
+}
+
+.txt-logo-2 {
+    width: 15px;
+    height: 16px;
+    background: url(img/renewal/logo-moim-r.png) no-repeat 0 0;
+    background-size: 15px 16px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 6px 0 0 -10px;
+}
+
+/*상단 배너박스 4 끝*/
+
+/*상단 배너박스 5 시작*/
+.top-banner-box-5>div:first-child>* {
+    /* > * 모든 것. 즉, 첫번째 자식의 모든것*/
+    margin-left: 130px;
+}
+
+.top-banner-box-5>div:last-child>* {
+    /*마지막 자식의 모든것*/
+    margin-left: -15px;
+}
+
+.top-banner-box-5 .img-box {
+    /*화면 왼쪽에 들어간 이미지*/
+    width: 492px;
+}
+
+/*상단 배너박스 5 끝*/
+
+/*상단 배너박스 6 시작*/
+.top-banner-box-6>div:first-child>* {
+    /* > * 모든 것. 즉, 첫번째 자식의 모든것*/
+    margin-left: 76px;
+}
+
+.top-banner-box-6>div:last-child>* {
+    /*마지막 자식의 모든것*/
+    margin-left: 35px;
+}
+
+.top-banner-box-6-wrap {
+    height: 750px;
+    background: #fff url(img/home_map.png) no-repeat -12% 50%;
+}
+
+.top-banner-box-6 .img-box {
+    width: 408px;
+}
+
+.top-banner-box-6 .img-box>img {
+    /*이미지 애니메이션 주기*/
+    transition: transform 1s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 1s;
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.top-banner-box-6 .img-box.active>img {
+    /*이미지 애니메이션 주기*/
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/*상단 배너박스 6 끝*/
+
+/* 대출박스 시작 */
+.loan-box {
+    background-color: #333b58;
+    /*밤하늘*/
+    position: relative;
+    z-index: 0;
+    color: #fff;
+    /*white*/
+    padding-top: 160px;
+}
+
+.loan-box>.con {
+    /*글자가 배경위로 항상 보이도록*/
+    position: relative;
+    z-index: 1;
+}
+
+.loan-box>.sky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.loan-box>.sky>.blue {
+    /*낮 하늘*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #559cde;
+    transition: height .5s;
+}
+
+.loan-box.active>.sky>.blue {
+    /*활성화되면 낮 하늘 높이 0, 그럼 밤 하늘이 보이게 됨*/
+    height: 0;
+}
+
+/*달 만들기*/
+.loan-box>.sky>.moon {
+    /*     outline: solid 3px red; */
+    width: 112px;
+    height: 112px;
+    position: absolute;
+    top: 190px;
+    /*달을 고정시키기위해서 화면을 반으로 한 값에서 왼쪽으로 400px에 위치시키기*/
+    left: calc(50% + 440px);
+    /*감추기*/
+    overflow: hidden;
+}
+
+.loan-box>.sky>.moon>.base {
+    /*     outline: solid 3px gold; */
+    width: 110px;
+    height: 110px;
+    background-color: #ffcd00;
+    border-radius: 50%;
+    /*원형*/
+    transition: background-color 1s;
+}
+
+.loan-box.active>.sky>.moon>.base {
+    /*moon일때 색상 흰색*/
+    background-color: white;
+}
+
+
+.loan-box>.sky>.moon>.shadow {
+    /*moon을 가려주는 역할*/
+    /*     outline: solid 3px green; */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    border-radius: 50%;
+    transition: top .5s .2s, left .5s .2s;
+}
+
+.loan-box.active>.sky>.moon>.shadow {
+    /*shadow를 움직여 moon을 가리는 애니메이션. loan-box가 활성화-> 낮하늘 높이 0, shadow 활성화 로 달만들어짐. 즉 loan-box 비활성화는 낮 */
+    top: -23%;
+    left: -23%;
+    background-color: #333b58;
+}
+
+/*별 시작*/
+.loan-box>.sky .ico-star {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.loan-box>.sky .ico-star-1 {
+    top: 30%;
+    left: 10%;
+}
+
+.loan-box>.sky .ico-star-2 {
+    top: 10%;
+    left: 20%;
+}
+
+.loan-box>.sky .ico-star-3 {
+    top: 25%;
+    left: 15%;
+}
+
+.loan-box>.sky .ico-star-4 {
+    top: 40%;
+    right: 15%;
+}
+
+.loan-box>.sky .ico-star-5 {
+    top: 43%;
+    right: 30%;
+}
+
+.loan-box>.sky .ico-star-6 {
+    top: 73%;
+    right: 27%;
+}
+
+.loan-box>.sky .ico-star-7 {
+    top: 65%;
+    left: 22%;
+}
+
+@keyframes clittering {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(0.9);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+}
+
+.loan-box>.sky .ico-star-1 {
+    animation: clittering 2s infinite;
+}
+
+.loan-box>.sky .ico-star-2 {
+    animation: clittering 3s infinite;
+}
+
+.loan-box>.sky .ico-star-3 {
+    animation: clittering 5s infinite;
+}
+
+.loan-box>.sky .ico-star-4 {
+    animation: clittering 2s infinite;
+}
+
+.loan-box>.sky .ico-star-5 {
+    animation: clittering 4s infinite;
+}
+
+.loan-box>.sky .ico-star-6 {
+    animation: clittering 1.8s infinite;
+}
+
+.loan-box>.sky .ico-star-7 {
+    animation: clittering 3.5s infinite;
+}
+
+/*별 끝*/
+
+/*con 시작*/
+.loan-box>.con>h1 {
+    font-size: 40px;
+}
+
+.loan-box>.con>.des {
+    margin-top: 24px;
+    font-size: 15px;
+    opacity: .6;
+}
+
+.loan-box>.con>.menu-box-1 {
+    margin-top: 20px;
+}
+
+.loan-box>.con>.menu-box-1>ul>li {
+    /*마이너스 통장대출 등 글자 간격 맞추기*/
+    /*     outline: 1px solid red; */
+    margin: 0 3px;
+}
+
+.loan-box>.con>.menu-box-1>ul>li>a {
+    /*     outline: 1px solid gold; */
+    display: block;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.09);
+    border-radius: 10px;
+}
+
+.loan-box>.con>.menu-box-1>ul>li:hover>a>span {
+    text-decoration: underline;
+}
+
+.loan-box>.con>.menu-box-1>ul>li>a::after {
+    content: " >";
+}
+
+.loan-box>.con>.img-box-1 {
+    /*img가 있는 영역. img에 margin-top을 직접 주면 안될까?*/
+    /*     outline: 1px solid green; */
+    margin-top: 20px;
+}
+
+.loan-box>.con>.img-box-1>img {
+    display: block;
+    width: 429px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*con 끝*/
+
+/* 대출박스 끝 */
+
+/* 체크카드박스 시작 */
+.checkcard-box {
+    padding-top: 150px;
+    padding-bottom: 130px;
+}
+
+.checkcard-box>.con>h1 {
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 1.35;
+}
+
+.checkcard-box>.con>.des {
+    margin-top: 24px;
+    font-size: 15px;
+    color: #666;
+}
+
+.checkcard-box .btn-box {
+    /*     outline: 1px solid blue; */
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.checkcard-box .btn-box>a {
+    /*     outline: 1px solid red; */
+    background-color: #f6f6f6;
+    border-radius: 10px;
+    width: 258px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+}
+
+.checkcard-box .btn-box>a:hover>span {
+    text-decoration: underline;
+}
+
+.checkcard-box .btn-box>a::after {
+    content: ">";
+    margin-left: 10px;
+}
+
+/* 체크카드박스-슬라이더 시작 */
+/*슬라이더 사용시 '>' 사용 금지. slick 이후로는 사용 가능*/
+.checkcard-box .slider-box-1 {
+    position: relative;
+    /*arrow를 슬라이더 박스 기준으로 움직이기 위해*/
+    width: 720px;
+    margin: 0 auto;
+    margin-top: 70px;
+}
+
+.checkcard-box .slider-box-1 .slick .item {
+    /*카드 이미지 이동 자연스럽게*/
+    transition: transform .3s;
+}
+
+.checkcard-box .slider-box-1 .slick .item>.img-box {
+    /*윗부분에 카드 이미지 잘리는 거 방지 목적*/
+    /*     outline: 1px solid green; */
+    padding: 60px 0;
+    /*top과 bottom에 padding 줌*/
+}
+
+.checkcard-box .slider-box-1 .slick .item.slick-center {
+    /*가운데 카드 크게 만들기*/
+    transform: scale(1.2);
+}
+
+.checkcard-box .slider-box-1 .arrows>.btn-arrow {
+    /*화살표 두개가 슬라이더 박스 기준으로 왼편으로 위치하게 된다. */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: calc(100% + 50px);
+    cursor: pointer;
+}
+
+.checkcard-box .slider-box-1 .arrows>.btn-arrow:active {
+    transform: translateY(-45%);
+}
+
+.checkcard-box .slider-box-1 .arrows>.btn-arrow.btn-arrow-right {
+    left: calc(100% + 50px);
+    right: auto;
+}
+
+/* 체크카드박스 끝 */
+
+/* IT기술박스 시작 */
+.itskill-box {
+    margin-top: 160px;
+    padding-bottom: 170px;
+    background-color: #f9f9f9;
+    /*가로선을 이미지 위로 드러내도록*/
+    position: relative;
+    z-index: 1;
+}
+
+.itskill-box>.con>h1 {
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 1.35;
+    color: #111;
+}
+
+.itskill-box>.con>.divider {
+    /*맨 위 글과 info-box 사이 짧은 가로선*/
+    height: 2px;
+    width: 100px;
+    margin: 50px auto 140px auto;
+    background-color: #000;
+}
+
+.itskill-box>.con>.info-box {
+    margin: 50px 30px auto 30px;
+}
+
+.itskill-box>.con>.info-box::before {
+    /*이미지 가로지르는 선*/
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #eee;
+    /*     background-color: red;   */
+    transform: translateY(122px);
+    /*이미지 가로지르는 선 위치 조정*/
+    z-index: -1;
+    /*선을 이미지 위로 보이도록*/
+}
+
+.itskill-box>.con>.info-box>ul>li {
+    width: 269px;
+}
+
+.itskill-box>.con>.info-box>ul>li:nth-child(2) {
+    margin-left: -26px;
+}
+
+.itskill-box>.con>.info-box>ul>li>h1 {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 45px;
+    margin-bottom: 17px;
+}
+
+.itskill-box>.con>.info-box>ul>li>.des {
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+    line-height: 24px;
+    font-weight: 200;
+}
+
+/* IT기술박스 끝 */
+
+/* 하단바 시작 */
+.bottom-bar {
+    font-size: 11px;
+    font-family: '돋움', dotum, sans-serif;
+    background-color: #eee;
+    padding: 20px 0 16px;
+}
+
+/*box-1 시작*/
+.bottom-bar .box-1 {
+    color: #666;
+}
+
+.bottom-bar .box-1>.menu-box-1>ul>li:hover>a {
+    text-decoration: underline;
+}
+
+.bottom-bar .box-1>.menu-box-1>ul>li>span {
+    float: left;
+    width: 1px;
+    height: 10px;
+    margin: 15px 15px 0;
+    background-color: #d8d8d8;
+}
+
+/*box-1 끝*/
+
+/*box-2 시작*/
+.bottom-bar .box-2 {
+    color: #888;
+    margin-top: 10px;
+}
+
+.bottom-bar .box-2>a {
+    font-size: 12px;
+}
+
+.bottom-bar .box-2>.rep-contact {
+    margin: 0 10px;
+}
+
+.bottom-bar .box-2>.copyright {
+    margin-top: 10px;
+}
+
+/*box-2 끝*/
+
+/*box-3 시작*/
+.bottom-bar .box-3 {
+    margin-top: 15px;
+}
+
+.bottom-bar .box-3>a>span {
+    /* 웹접근성품질인증, 웹트러스트인증 글자*/
+    margin-left: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #666;
+}
+
+.bottom-bar .box-3>a:hover {
+    text-decoration: underline;
+}
+
+.bottom-bar .box-3>.auth-mark-1 {
+    margin-right: 20px;
+}
+
+.bottom-bar .box-3>.auth-mark-1>img {
+    width: 48px;
+}
+
+.bottom-bar .box-3>.auth-mark-2>img {
+    width: 42px;
+}
+
+.bottom-bar .box-3>.menu-box-2>ul {
+    margin-right: 35px;
+}
+
+.bottom-bar .box-3>.menu-box-2>ul>li {
+    margin-left: 10px;
+}
+
+.bottom-bar .box-3>.menu-box-2>ul>li>a {
+    /*sns마크 각각 한칸*/
+    width: 24px;
+    height: 24px;
+}
+
+.bottom-bar .box-3>.menu-box-2>ul>li>a>span {
+    /*sns 마크*/
+    height: 100%;
+}
+
+.ico-2 {
+    background-image: url(img/ico_sns.png);
+}
+
+.ico-2.ico-2-facebook {
+    background-position: 0 -90px;
+}
+
+.ico-2.ico-2-instagram {
+    background-position: -191px -138px;
+}
+
+.ico-2.ico-2-youtube {
+    background-position: -90px -90px;
+}
+
+.ico-2.ico-2-branch {
+    background-position: -217px -138px;
+}
+
+/*box-3 끝*/
+/* 하단바 끝 */
